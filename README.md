@@ -3,7 +3,7 @@ CompleteSpinner
 
 A conceptual implementation of Android Spinner that handle **hint text** and **layout customization**. Easy to use.
 
-![enter image description here](http://oi58.tinypic.com/315zz1y.jpg)
+![enter image description here](http://oi62.tinypic.com/2rfsufq.jpg)
 
 Download
 --------
@@ -19,7 +19,7 @@ Maven:
 Considerations and code
 --------
 
-CompleteSpinner build the string value of the object shown in the view, using **toString()** method from *java.lang.Object* class. So, it is necesary to override this method in the object class to get the right string format.
+CompleteSpinner build the string value of the object shown in the view, using **toString()** method from *java.lang.Object* class. So, it is necesary to override this method in the object class, to get the right String format.
 ```java
     @Override
     public String toString() {
@@ -28,7 +28,7 @@ CompleteSpinner build the string value of the object shown in the view, using **
 ```
  
  
-We must to define a layout that is compose of **parent ViewGroup**, that represent the container of the Spinner. And, inside this view, it necesary to put **AutoCompleteTextView**, where the selected object are going to be shown. Then we can add some extra views to customize our Spinner.
+Define a layout that is compose of **parent ViewGroup**, that represent the container of the Spinner. And, inside this view, an **AutoCompleteTextView**, where is going to be shown the selected object. Then, we can add some extra views to customize our Spinner.
 ```xml
       <LinearLayout
         android:id="@+id/ll_spinner_container"
