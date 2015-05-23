@@ -3,7 +3,7 @@ CompleteSpinner
 
 A conceptual implementation of Android Spinner that handle **hint text** and **layout customization**. Easy to use.
 
-![enter image description here](http://oi58.tinypic.com/315zz1y.jpg)
+![enter image description here](http://oi62.tinypic.com/2rfsufq.jpg)
 
 Download
 --------
