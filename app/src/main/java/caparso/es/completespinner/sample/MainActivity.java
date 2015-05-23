@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import caparso.es.completespinner.CompleteSpinner;
-import caparso.es.completespinner.sample.vo.SprinnerVO;
+import caparso.es.completespinner.sample.vo.SpinnerVO;
 import caparso.es.completespinner.spinnermode.SpinnerMode;
 
 public class MainActivity extends ActionBarActivity {
@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
         // Spinner with custom view
         AutoCompleteTextView actSpinner = (AutoCompleteTextView) findViewById(R.id.act_spinner);
         LinearLayout llSpinnerContainer = (LinearLayout) findViewById(R.id.ll_spinner_container);
-        final CompleteSpinner<SprinnerVO> completeSpinner = new CompleteSpinner<SprinnerVO>(this, SpinnerMode.MODE_POPUP);
+        final CompleteSpinner<SpinnerVO> completeSpinner = new CompleteSpinner<SpinnerVO>(this, SpinnerMode.MODE_POPUP);
         completeSpinner.setView(llSpinnerContainer, actSpinner);
         completeSpinner.setAdapter(getAdapter());
 
@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (completeSpinner.getSelectedItem() != null) {
-                    SprinnerVO sprinnerVO = completeSpinner.getSelectedItem();
+                    SpinnerVO sprinnerVO = completeSpinner.getSelectedItem();
                     String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
                     Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
                 }
@@ -58,18 +58,18 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private ArrayAdapter getAdapter() {
-        final ArrayAdapter<SprinnerVO> arrayAdapter = new ArrayAdapter<SprinnerVO>(
+        final ArrayAdapter<SpinnerVO> arrayAdapter = new ArrayAdapter<SpinnerVO>(
                 this,
                 android.R.layout.select_dialog_item);
-        arrayAdapter.add(new SprinnerVO(0, "Jasón para los amigos"));
-        arrayAdapter.add(new SprinnerVO(1, "JaVieRiLL0 eR d10s"));
-        arrayAdapter.add(new SprinnerVO(2, "Kalesi para todos"));
-        arrayAdapter.add(new SprinnerVO(3, "Peter Gregory"));
-        arrayAdapter.add(new SprinnerVO(4, "Gavin Belson"));
-        arrayAdapter.add(new SprinnerVO(5, "Gilfoyle"));
-        arrayAdapter.add(new SprinnerVO(6, "Ragnar Lothbrok"));
-        arrayAdapter.add(new SprinnerVO(7, "Jared"));
-        arrayAdapter.add(new SprinnerVO(8, "Dinesh"));
+        arrayAdapter.add(new SpinnerVO(0, "Jasón para los amigos"));
+        arrayAdapter.add(new SpinnerVO(1, "JaVieRiLL0 eR d10s"));
+        arrayAdapter.add(new SpinnerVO(2, "Kalesi para todos"));
+        arrayAdapter.add(new SpinnerVO(3, "Peter Gregory"));
+        arrayAdapter.add(new SpinnerVO(4, "Gavin Belson"));
+        arrayAdapter.add(new SpinnerVO(5, "Gilfoyle"));
+        arrayAdapter.add(new SpinnerVO(6, "Ragnar Lothbrok"));
+        arrayAdapter.add(new SpinnerVO(7, "Jared"));
+        arrayAdapter.add(new SpinnerVO(8, "Dinesh"));
         return arrayAdapter;
     }
 
