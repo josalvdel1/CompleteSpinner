@@ -5,7 +5,7 @@
     <string name="spinner_hint_default">Elige una opción</string>
 
     <!-- POPUP -->
-    <string name="popup_choose_one">Elije una opción</string>
+    <string name="popup_choose_one">Elige una opción</string>
     <string name="popup_accept">Aceptar</string>
     <string name="popup_delete">Borrar</string>
 </resources>
