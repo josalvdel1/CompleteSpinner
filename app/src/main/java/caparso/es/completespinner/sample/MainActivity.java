@@ -1,5 +1,6 @@
 package caparso.es.completespinner.sample;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import caparso.es.completespinner.CompleteSpinner;
 import caparso.es.completespinner.sample.vo.SpinnerVO;
 import caparso.es.completespinner.spinnermode.SpinnerMode;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +62,9 @@ public class MainActivity extends ActionBarActivity {
         final ArrayAdapter<SpinnerVO> arrayAdapter = new ArrayAdapter<SpinnerVO>(
                 this,
                 android.R.layout.select_dialog_item);
-        arrayAdapter.add(new SpinnerVO(0, "Jasón para los amigos"));
-        arrayAdapter.add(new SpinnerVO(1, "JaVieRiLL0 eR d10s"));
-        arrayAdapter.add(new SpinnerVO(2, "Kalesi para todos"));
+        arrayAdapter.add(new SpinnerVO(0, "King in the north"));
+        arrayAdapter.add(new SpinnerVO(1, "Lanister"));
+        arrayAdapter.add(new SpinnerVO(2, "Kalesi"));
         arrayAdapter.add(new SpinnerVO(3, "Peter Gregory"));
         arrayAdapter.add(new SpinnerVO(4, "Gavin Belson"));
         arrayAdapter.add(new SpinnerVO(5, "Gilfoyle"));
