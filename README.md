@@ -68,5 +68,5 @@ completeSpinner.setAdapter(getAdapter());
 Next targets
 --------
 
-- Highlight selected item in dropdown/popup.
+- Highlight selected item in dropdown/popup view.
 - Multicheck spinner.
