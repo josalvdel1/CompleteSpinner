@@ -1,5 +1,6 @@
 package caparso.es.completespinner;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,7 +31,7 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
     private View view;
 
     /**
-     * TextView inside the spinner container. This view show selected item.
+     * Text container of the spinner view. This view show selected item.
      */
     private AutoCompleteTextView textView;
 
@@ -55,11 +56,6 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
     private int spinnerMode;
 
     /**
-     * True if dropdown is just dismissed and false otherwise. JUST FOR API 17+
-     */
-    private Boolean isDropDownDismissed = false;
-
-    /**
      * Default constructor
      *
      * @param context
@@ -79,9 +75,9 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
      * @param textView
      */
     public void setView(final View view, AutoCompleteTextView textView) {
-        prepareAutoCompleteTextView(view, textView);
         this.view = view;
         this.textView = textView;
+        prepareAutoCompleteTextView(this.view, this.textView);
     }
 
     /**
@@ -230,21 +226,11 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
         autoCompleteTextView.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (MotionEvent.ACTION_DOWN == event.getAction() && !isDropDownDismissed) {
+                if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     view.performClick();
                 }
-                isDropDownDismissed = false;
                 return true;
             }
         });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            autoCompleteTextView.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() {
-                @Override
-                public void onDismiss() {
-                    isDropDownDismissed = true;
-                }
-            });
-        }
-
     }
 }

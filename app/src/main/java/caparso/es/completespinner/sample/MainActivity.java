@@ -43,8 +43,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SpinnerVO sprinnerVO = completeSpinner.getSelectedItem();
-                String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
-                Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
+                if(sprinnerVO != null) {
+                    String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
+                    Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
