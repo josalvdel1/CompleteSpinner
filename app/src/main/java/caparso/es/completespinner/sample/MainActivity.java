@@ -42,11 +42,9 @@ public class MainActivity extends Activity {
         tvGetSelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (completeSpinner.getSelectedItem() != null) {
-                    SpinnerVO sprinnerVO = completeSpinner.getSelectedItem();
-                    String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
-                    Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
-                }
+                SpinnerVO sprinnerVO = completeSpinner.getSelectedItem();
+                String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
+                Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
             }
         });
 

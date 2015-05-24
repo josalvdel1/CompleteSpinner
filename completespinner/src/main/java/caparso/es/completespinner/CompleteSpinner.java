@@ -3,6 +3,7 @@ package caparso.es.completespinner;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,7 +27,7 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
     /**
      * Container of the spinner view.
      */
-    private ViewGroup view;
+    private View view;
 
     /**
      * TextView inside the spinner container. This view show selected item.
@@ -54,6 +55,11 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
     private int spinnerMode;
 
     /**
+     * True if dropdown is just dismissed and false otherwise. JUST FOR API 17+
+     */
+    private Boolean isDropDownDismissed = false;
+
+    /**
      * Default constructor
      *
      * @param context
@@ -63,7 +69,7 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
         super(context);
         this.context = context;
         this.spinnerMode = spinnerMode;
-        buildDefaultView();
+        buildDefaultSpinnerView();
     }
 
     /**
@@ -72,8 +78,8 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
      * @param view
      * @param textView
      */
-    public void setView(final ViewGroup view, AutoCompleteTextView textView) {
-        prepareView(view, textView);
+    public void setView(final View view, AutoCompleteTextView textView) {
+        prepareAutoCompleteTextView(view, textView);
         this.view = view;
         this.textView = textView;
     }
@@ -99,12 +105,10 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        if (spinnerMode == SpinnerMode.MODE_POPUP) {
-            alertBuilder.show();
+        if (spinnerMode == SpinnerMode.MODE_DROPDOWN) {
+            textView.showDropDown();
         } else {
-            if (!textView.isPopupShowing()) {
-                textView.showDropDown();
-            }
+            alertBuilder.show();
         }
     }
 
@@ -154,20 +158,20 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
      *
      * @return
      */
-    public ViewGroup getView() {
+    public View getView() {
         return view;
     }
 
     /**
      * Build a default view for the spinner.
      */
-    private void buildDefaultView() {
+    private void buildDefaultSpinnerView() {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View defaultView = inflater.inflate(R.layout.spinner_default, null);
         this.view = (LinearLayout) defaultView.findViewById(R.id.ll_spinner_container);
         this.textView = (AutoCompleteTextView) defaultView.findViewById(R.id.act_spinner);
-        prepareView(this.view, this.textView);
+        prepareAutoCompleteTextView(this.view, this.textView);
     }
 
     /**
@@ -217,7 +221,7 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
     /**
      * Prepare view elements to build the spinner. AutoCompleteTextView must be not focusable, no suggestion type and perform the viewgroup click.
      */
-    private void prepareView(final ViewGroup view, AutoCompleteTextView autoCompleteTextView) {
+    private void prepareAutoCompleteTextView(final View view, AutoCompleteTextView autoCompleteTextView) {
         if (autoCompleteTextView.getHint() == null || "".equals(autoCompleteTextView.getHint())) {
             autoCompleteTextView.setHint(context.getString(R.string.spinner_hint_default));
         }
@@ -226,11 +230,21 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
         autoCompleteTextView.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (MotionEvent.ACTION_DOWN == event.getAction()) {
+                if (MotionEvent.ACTION_DOWN == event.getAction() && !isDropDownDismissed) {
                     view.performClick();
                 }
+                isDropDownDismissed = false;
                 return true;
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            autoCompleteTextView.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    isDropDownDismissed = true;
+                }
+            });
+        }
+
     }
 }
