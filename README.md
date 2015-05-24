@@ -28,7 +28,7 @@ CompleteSpinner build the string value of the object shown in the view, using **
 ```
  
  
-Define a layout that is compose of **parent ViewGroup**, that represent the container of the Spinner. And, inside this view, an **AutoCompleteTextView**, where is going to be shown the selected object. Then, we can add some extra views to customize our Spinner.
+Define a layout that is compose of **parent View**, that represent the container of the Spinner. And, an **AutoCompleteTextView**, where is going to be shown the selected object. Then, we can add some extra views to customize our Spinner.
 ```xml
       <LinearLayout
         android:id="@+id/ll_spinner_container"
