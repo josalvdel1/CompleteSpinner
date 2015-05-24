@@ -16,6 +16,8 @@ import caparso.es.completespinner.spinnermode.SpinnerMode;
 
 public class MainActivity extends Activity {
 
+    private CompleteSpinner completeSpinnerDropDown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 SpinnerVO sprinnerVO = completeSpinner.getSelectedItem();
-                if(sprinnerVO != null) {
+                if (sprinnerVO != null) {
                     String selectedText = sprinnerVO.getId() + ", " + sprinnerVO.getTitulo();
                     Toast.makeText(MainActivity.this, selectedText, Toast.LENGTH_SHORT).show();
                 }
@@ -51,10 +53,10 @@ public class MainActivity extends Activity {
         });
 
         // Default spinner
-        LinearLayout llSpinnerContainer2 = (LinearLayout) findViewById(R.id.ll_spinner_container2);
-        CompleteSpinner completeSpinner2 = new CompleteSpinner(this, SpinnerMode.MODE_DROPDOWN);
-        completeSpinner2.setAdapter(getAdapter());
-        llSpinnerContainer2.addView(completeSpinner2.getView());
+        LinearLayout llSpinnerContainer2 = (LinearLayout) findViewById(R.id.ll_spinner_container_dropdown);
+        completeSpinnerDropDown = new CompleteSpinner(this, SpinnerMode.MODE_DROPDOWN);
+        completeSpinnerDropDown.setAdapter(getAdapter());
+        llSpinnerContainer2.addView(completeSpinnerDropDown.getView());
 
     }
 
@@ -74,4 +76,12 @@ public class MainActivity extends Activity {
         return arrayAdapter;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (completeSpinnerDropDown.isDropDownShowing()) {
+            completeSpinnerDropDown.dismissDropDown();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

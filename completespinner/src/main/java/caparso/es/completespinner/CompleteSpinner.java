@@ -149,6 +149,18 @@ public class CompleteSpinner<T> extends View implements View.OnClickListener {
         textView.setText(selectedItem.toString());
     }
 
+    public Boolean isDropDownShowing() {
+        return textView.isPopupShowing();
+    }
+
+    public void showDropDown() {
+        textView.showDropDown();
+    }
+
+    public void dismissDropDown() {
+        textView.dismissDropDown();
+    }
+
     /**
      * Return the container view of the spinner.
      *
