@@ -64,3 +64,9 @@ final CompleteSpinner<SprinnerVO> completeSpinner = new CompleteSpinner<Sprinner
 completeSpinner.setView(llSpinnerContainer, actSpinner);
 completeSpinner.setAdapter(getAdapter());
 ```
+
+Next targets
+--------
+
+- Highlight selected item in dropdown/popup.
+- Multicheck spinner.
