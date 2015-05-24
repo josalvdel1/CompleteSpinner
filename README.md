@@ -65,7 +65,7 @@ completeSpinner.setView(llSpinnerContainer, actSpinner);
 completeSpinner.setAdapter(getAdapter());
 ```
 
-Next targets
+Next developments
 --------
 
 - Highlight selected item in dropdown/popup view.
