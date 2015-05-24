@@ -68,5 +68,5 @@ completeSpinner.setAdapter(getAdapter());
 Next developments
 --------
 
-- Highlight selected item in dropdown/popup view.
-- Multicheck spinner.
+- Highlight the selected item, in dropdown/popup view.
+- Multi selectable spinner.
