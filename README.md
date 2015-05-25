@@ -60,7 +60,7 @@ Finally, an example of Java code.
 AutoCompleteTextView actSpinner = (AutoCompleteTextView) findViewById(R.id.act_spinner);
 LinearLayout llSpinnerContainer = (LinearLayout) findViewById(R.id.ll_spinner_container);
         
-final CompleteSpinner<SprinnerVO> completeSpinner = new CompleteSpinner<SprinnerVO>(this, SpinnerMode.MODE_POPUP);
+final CompleteSpinner<SpinnerVO> completeSpinner = new CompleteSpinner<SpinnerVO>(this, SpinnerMode.MODE_POPUP);
 completeSpinner.setView(llSpinnerContainer, actSpinner);
 completeSpinner.setAdapter(getAdapter());
 ```
